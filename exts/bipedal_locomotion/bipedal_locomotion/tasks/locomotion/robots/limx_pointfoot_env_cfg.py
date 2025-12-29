@@ -64,6 +64,11 @@ class PFBaseEnvCfg_PLAY(PFBaseEnvCfg):
         self.events.push_robot = None
         # remove random base mass addition event
         self.events.add_base_mass = None
+        
+        # 禁用自动命令重采样，允许键盘控制 / Disable auto command resampling for keyboard control
+        # 设置极大的重采样时间，实际上就是不自动重采样 / Set very large resampling time to effectively disable it
+        self.commands.base_velocity.resampling_time_range = (1000.0, 1000.0)
+        self.episode_length_s = 120.0  # 延长测试时间 / Extend play time
 
 
 ############################

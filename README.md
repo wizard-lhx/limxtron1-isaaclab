@@ -163,3 +163,6 @@ This project uses the following open-source libraries:
 - Haoxiang Luo
 - Junde Guo
 
+## 更新记录
+11.29 加入键盘控制，初始化时没有使速度为0。
+修改limx_pointfoot_env_cfg.py的命令和重置时间。
