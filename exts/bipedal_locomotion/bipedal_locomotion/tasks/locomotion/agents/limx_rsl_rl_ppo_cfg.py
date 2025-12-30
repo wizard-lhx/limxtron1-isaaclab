@@ -82,6 +82,50 @@ class PF_TRON1AFlatPPORunnerCfg(RslRlOnPolicyRunnerCfg):
         orthogonal_init=False,    # 不使用正交初始化 / Don't use orthogonal initialization
     )
 
+# PF_TRON1A粗糙训练配置 - 针对特定机器人型号的优化配置
+# PF_TRON1A rough terrain training configuration - optimized for specific robot model
+@configclass
+class PF_TRON1ARoughPPORunnerCfg(RslRlOnPolicyRunnerCfg):
+    num_steps_per_env = 24
+    max_iterations = 15000         # 适合粗糙环境 / Suitable for rough terrain
+    save_interval = 200           # 更频繁的保存 / More frequent saving
+    experiment_name = "pf_tron_1a_rough"
+    empirical_normalization = False
+    policy = RslRlPpoActorCriticCfg(
+        init_noise_std=1.0,
+        actor_hidden_dims=[512, 256, 128],
+        critic_hidden_dims=[512, 256, 128],
+        activation="elu",
+    )
+    # 使用MLP版本的PPO算法，支持历史观测
+    # Use MLP version of PPO algorithm with history observation support
+    algorithm = RslRlPpoAlgorithmMlpCfg(
+        class_name="PPO",
+        value_loss_coef=1.0,
+        use_clipped_value_loss=True,
+        clip_param=0.2,
+        entropy_coef=0.01,
+        num_learning_epochs=5,
+        num_mini_batches=4,
+        learning_rate=1.0e-3,
+        schedule="adaptive",
+        gamma=0.99,
+        lam=0.95,
+        desired_kl=0.01,
+        max_grad_norm=1.0,
+        obs_history_len=10,   # 观测历史长度 / Observation history length
+    )
+
+    # 编码器配置 - 用于处理历史观测信息
+    # Encoder configuration - for processing history observation information
+    encoder = EncoderCfg(
+        output_detach=True,       # 输出分离，防止梯度回传 / Detach output to prevent gradient flow
+        num_output_dim=3,         # 输出维度 / Output dimensions
+        hidden_dims=[256, 128],   # 编码器隐藏层 / Encoder hidden dimensions
+        activation="elu",         # 激活函数 / Activation function
+        orthogonal_init=False,    # 不使用正交初始化 / Don't use orthogonal initialization
+    )
+
 #-----------------------------------------------------------------
 @configclass
 class SF_TRON1AFlatPPORunnerCfg(RslRlOnPolicyRunnerCfg):

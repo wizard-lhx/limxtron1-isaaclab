@@ -19,7 +19,7 @@ parser.add_argument(
     "--disable_fabric", action="store_true", default=False, help="Disable fabric and use USD I/O operations."
 )
 parser.add_argument("--num_envs", type=int, default=1, help="Number of environments to simulate.")
-parser.add_argument("--task", type=str, default="Isaac-Limx-PF-Blind-Flat-Play-v0", help="Name of the task.")
+parser.add_argument("--task", type=str, default="Isaac-Limx-PF-Blind-Rough-Play-v0", help="Name of the task.")
 parser.add_argument("--seed", type=int, default=None, help="Seed used for the environment")
 parser.add_argument("--checkpoint_path", type=str, default="/home/lhx/project/limxtron1lab-main/logs/rsl_rl/pf_tron_1a_flat/2025-12-24_10-14-58/model_3000.pt", help="Relative path to checkpoint file.")
 parser.add_argument("--use_onnx", action="store_true", help="使用ONNX模型 / Use ONNX model")
