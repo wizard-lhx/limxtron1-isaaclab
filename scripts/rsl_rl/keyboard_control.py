@@ -64,20 +64,28 @@ class ManualController:
         self.angular_velocity = torch.zeros(3, device=device)
         self.max_linear_vel = 1.0
         self.max_angular_vel = 1.0
-        self.keys_pressed = []
+        self.max_force = 200.0
+        self.keys_pressed_vel = []
+        self.keys_pressed_force = []
         # Get keyboard input handler
         from pynput import keyboard
         def on_press(key):
             try:
-                self.keys_pressed.clear()
+                self.keys_pressed_vel.clear()
                 # Get current key presses
-                if key.char=='w': self.keys_pressed.append('w')
-                if key.char=='a': self.keys_pressed.append('a')
-                if key.char=='s': self.keys_pressed.append('s')
-                if key.char=='d': self.keys_pressed.append('d')
-                if key.char=='q': self.keys_pressed.append('q')
-                if key.char=='e': self.keys_pressed.append('e')
-                if key.char=='p': self.keys_pressed.append('p')
+                if key.char=='w': self.keys_pressed_vel.append('w')
+                if key.char=='a': self.keys_pressed_vel.append('a')
+                if key.char=='s': self.keys_pressed_vel.append('s')
+                if key.char=='d': self.keys_pressed_vel.append('d')
+                if key.char=='q': self.keys_pressed_vel.append('q')
+                if key.char=='e': self.keys_pressed_vel.append('e')
+                if key.char=='p': self.keys_pressed_vel.append('p')
+
+                if key.char=='i': self.keys_pressed_force.append('i')
+                if key.char=='j': self.keys_pressed_force.append('j')
+                if key.char=='k': self.keys_pressed_force.append('k')
+                if key.char=='l': self.keys_pressed_force.append('l')
+                if key.char=='u': self.keys_pressed_force.append('u')
                 print('字母键： {} 被按下'.format(key.char))
             except AttributeError:
                 print('特殊键： {} 被按下'.format(key))
@@ -100,33 +108,49 @@ class ManualController:
             device=self.device,
             dtype=torch.float32,
         )
+    def get_force_command(self):
+        """Return external force command [fx, fy, fz]."""
+        return self.force
     
-    def update_from_keys(self, keys_pressed):
+    def update_from_vel_keys(self, keys_pressed_vel):
         """Update velocity based on pressed keys."""
         # Reset velocities
         self.linear_velocity.zero_()
         self.angular_velocity.zero_()
         
         # WASD control
-        if 'w' in keys_pressed:
+        if 'w' in keys_pressed_vel:
             self.linear_velocity[0] = self.max_linear_vel  # Forward
-        if 's' in keys_pressed:
+        if 's' in keys_pressed_vel:
             self.linear_velocity[0] = -self.max_linear_vel  # Backward
-        if 'a' in keys_pressed:
+        if 'a' in keys_pressed_vel:
             self.linear_velocity[1] = self.max_linear_vel  # Left
-        if 'd' in keys_pressed:
+        if 'd' in keys_pressed_vel:
             self.linear_velocity[1] = -self.max_linear_vel  # Right
             
         # QE for rotation
-        if 'q' in keys_pressed:
+        if 'q' in keys_pressed_vel:
             self.angular_velocity[2] = self.max_angular_vel  # Turn left
-        if 'e' in keys_pressed:
+        if 'e' in keys_pressed_vel:
             self.angular_velocity[2] = -self.max_angular_vel  # Turn right
         # P for stop
-        if 'p' in keys_pressed:
+        if 'p' in keys_pressed_vel:
             self.linear_velocity.zero_()
             self.angular_velocity.zero_()
-
+    
+    def update_from_force_keys(self, keys_pressed_force):
+        """Update external force based on pressed keys."""
+        self.force = torch.zeros(3, device=self.device)
+        if 'k' in keys_pressed_force:
+            self.force[0] = self.max_force
+        if 'i' in keys_pressed_force:
+            self.force[0] = -self.max_force
+        if 'j' in keys_pressed_force:
+            self.force[1] = self.max_force
+        if 'l' in keys_pressed_force:
+            self.force[1] = -self.max_force
+        if 'u' in keys_pressed_force:
+            self.force.zero_()
 def main():
     """主函数 / Main function"""
     
@@ -229,24 +253,45 @@ def main():
     # 主循环 / Main loop
     print("\n开始键盘控制模式 / Starting keyboard control mode...\n")
     
+    # initialize commands and step count
     step_count = 0
+    commands = torch.zeros((env.num_envs, 3), device=env.unwrapped.device)
+    cmd_term = env.unwrapped.command_manager.get_term("base_velocity")
+    cmd_term.vel_command_b[:] = commands
     
+    # apply external force function
+    robot = env.unwrapped.scene["robot"]
+    def apply_external_force(force):
+        torque = torch.zeros((1, 3), device=robot.device)
+        robot.set_external_force_and_torque(
+            force.unsqueeze(1),  # shape: [num_envs, num_bodies, 3]
+            torque.unsqueeze(1), 
+            env_ids=torch.tensor([0], device=robot.device),
+            body_ids=[robot.find_bodies("base_Link")[0][0]]
+        )
+        manual_controller.keys_pressed_force.clear()
+
     # simulate environment
-    while simulation_app.is_running():        
+    while simulation_app.is_running():       
         # Update manual controller
-        if manual_controller.keys_pressed:
-            manual_controller.update_from_keys(manual_controller.keys_pressed)
+        if manual_controller.keys_pressed_vel:
+            manual_controller.update_from_vel_keys(manual_controller.keys_pressed_vel)
             # Override the command in the environment (expects [vx, vy, wz])
             velocity_cmd = manual_controller.get_velocity_command()
             cmd_term = env.unwrapped.command_manager.get_term("base_velocity")
             # broadcast to all envs
             commands = velocity_cmd.unsqueeze(0).repeat(env.num_envs, 1)
-            cmd_term.vel_command_b[:] = velocity_cmd.unsqueeze(0).repeat(env.num_envs, 1)
+            cmd_term.vel_command_b[:] = commands
             # ensure angular velocity mode (not heading) and not standing
             if hasattr(cmd_term, "is_heading_env"):
                 cmd_term.is_heading_env[:] = False
             if hasattr(cmd_term, "is_standing_env"):
                 cmd_term.is_standing_env[:] = False
+        if manual_controller.keys_pressed_force:
+            manual_controller.update_from_force_keys(manual_controller.keys_pressed_force)
+            # Apply external force to the robot base
+            force = manual_controller.get_force_command()
+            apply_external_force(force)
         # run everything in inference mode
         with torch.inference_mode():            
             # agent stepping
@@ -261,14 +306,16 @@ def main():
             
             step_count += 1
             
+            actual_vel = env.unwrapped.scene["robot"].data.root_lin_vel_w[0, :2]
+            actual_ang_vel = env.unwrapped.scene["robot"].data.root_ang_vel_w[0, 2]
+            mse_vel = torch.mean((torch.cat([actual_vel,actual_ang_vel.unsqueeze(0)])-commands[0]) ** 2).item()
             # 每100步打印一次状态 / Print status every 100 steps
             if step_count % 100 == 0:
-                actual_vel = env.unwrapped.scene["robot"].data.root_lin_vel_w[0, :2]
-                actual_ang_vel = env.unwrapped.scene["robot"].data.root_ang_vel_w[0, 2]
                 print(f"\n步数 / Steps: {step_count}")
                 print(f"指令 / Command: vx={commands[0, 0].item():.2f}, vy={commands[0, 1].item():.2f}, wz={commands[0, 2].item():.2f}")
                 print(f"实际 / Actual:  vx={actual_vel[0].item():.2f}, vy={actual_vel[1].item():.2f}, wz={actual_ang_vel.item():.2f}")
-    
+                print(f"实际速度与指令速度的均方误差: MSE={mse_vel:.2f}")
+
     # 关闭环境 / Close environment
     env.close()
 
