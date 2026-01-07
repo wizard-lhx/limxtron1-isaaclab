@@ -73,6 +73,11 @@ torch.backends.cudnn.benchmark = False
 # @hydra_task_config(args_cli.task, "rsl_rl_cfg_entry_point")
 def main():
     """使用RSL-RL智能体进行训练 / Train with RSL-RL agent."""
+    
+    # 启用梯度异常检测（调试用，会降低性能）/ Enable gradient anomaly detection (for debugging, reduces performance)
+    # 当出现NaN/Inf时会准确定位到哪个操作导致的
+    # torch.autograd.set_detect_anomaly(True)  # 取消注释以启用 / Uncomment to enable
+    
     # 解析配置 / Parse configuration
     env_cfg: ManagerBasedRLEnvCfg = parse_env_cfg(
         task_name=args_cli.task, device=args_cli.device, num_envs=args_cli.num_envs
@@ -116,7 +121,7 @@ def main():
         env = multi_agent_to_single_agent(env)
 
     # 为rsl-rl包装环境 / Wrap around environment for rsl-rl
-    env = RslRlVecEnvWrapper(env)
+    env = RslRlVecEnvWrapper(env,clip_actions=5.0)
 
     # 创建来自rsl-rl的运行器 / Create runner from rsl-rl
     # 使用动态评估来创建正确的运行器类 / Use dynamic evaluation to create the correct runner class

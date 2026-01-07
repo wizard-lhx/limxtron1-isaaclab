@@ -169,3 +169,7 @@ This project uses the following open-source libraries:
 修改limx_pointfoot_env_cfg.py的命令和重置时间。
 11.30 修复初始速度问题
 添加外部力测试
+1.7
+增加视角跟踪。
+修复action异常导致训练不稳定问题
+修改reward适应楼梯环境

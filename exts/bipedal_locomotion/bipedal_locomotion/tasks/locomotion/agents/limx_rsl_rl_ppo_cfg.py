@@ -126,6 +126,14 @@ class PF_TRON1ARoughPPORunnerCfg(RslRlOnPolicyRunnerCfg):
         orthogonal_init=False,    # 不使用正交初始化 / Don't use orthogonal initialization
     )
 
+# PF_TRON1A楼梯训练配置 - 针对特定机器人型号的优化配置
+# PF_TRON1A stair terrain training configuration - optimized for specific robot model
+class PF_TRON1AStairPPORunnerCfg(PF_TRON1AFlatPPORunnerCfg):
+    def __post_init__(self):
+        super().__post_init__()
+
+        self.experiment_name = "pf_tron_1a_stair"
+        self.max_iterations = 15000         # 适合楼梯环境 / Suitable for stair terrain
 #-----------------------------------------------------------------
 @configclass
 class SF_TRON1AFlatPPORunnerCfg(RslRlOnPolicyRunnerCfg):

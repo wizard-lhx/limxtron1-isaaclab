@@ -54,6 +54,35 @@ from isaaclab_rl.rsl_rl import RslRlVecEnvWrapper
 import bipedal_locomotion  # noqa: F401
 from bipedal_locomotion.utils.wrappers.rsl_rl import RslRlPpoAlgorithmMlpCfg
 
+import numpy as np
+
+class CameraController:
+    """Camera controller to follow the robot (no external deps)."""
+
+    def __init__(self, env, camera_distance=5.0, camera_height=2.0):
+        self.env = env
+        self.camera_distance = camera_distance
+        self.camera_height = camera_height
+
+    def update_camera_view(self):
+        """Update camera to follow the robot."""
+        # Get robot position and yaw heading from quaternion
+        robot_pos = self.env.unwrapped.scene["robot"].data.root_pos_w[0].cpu().numpy()
+        q = self.env.unwrapped.scene["robot"].data.root_quat_w[0].cpu().numpy()  # [w, x, y, z]
+        w, x, y, z = float(q[0]), float(q[1]), float(q[2]), float(q[3])
+        # Compute forward vector in world from yaw (approx):
+        # forward in local = [1, 0, 0]
+        # world forward xz using quaternion (ignore roll/pitch for camera)
+        # yaw from quaternion
+        yaw = np.arctan2(2.0 * (w * z + x * y), 1.0 - 2.0 * (y * y + z * z))
+        forward = np.array([np.cos(yaw), np.sin(yaw), 0.0])
+        # camera behind the robot along -forward
+        camera_eye = robot_pos + (-forward * self.camera_distance)
+        camera_eye[2] += self.camera_height
+        # look at the robot center slightly above
+        camera_target = robot_pos.copy()
+        camera_target[2] += 0.5
+        self.env.unwrapped.sim.set_camera_view(eye=camera_eye, target=camera_target, camera_prim_path="/OmniverseKit_Persp")
 
 class ManualController:
     """Manual controller for robot using WASD keys."""
@@ -194,7 +223,7 @@ def main():
     manual_controller = ManualController(device=env.unwrapped.device)
     
     # wrap around environment for rsl-rl
-    env = RslRlVecEnvWrapper(env)
+    env = RslRlVecEnvWrapper(env,clip_actions=5.0)
     
     # 加载策略 / Load policy
     policy = None
@@ -239,6 +268,8 @@ def main():
         policy = ppo_runner.get_inference_policy(device=env.unwrapped.device)
         encoder = ppo_runner.get_inference_encoder(device=env.unwrapped.device)
         print(f"[INFO] 已加载PyTorch模型 / Loaded PyTorch model")
+    
+    camera_controller = CameraController(env)
 
     # reset environment
     obs, obs_dict = env.get_observations()
@@ -316,6 +347,9 @@ def main():
                 print(f"实际 / Actual:  vx={actual_vel[0].item():.2f}, vy={actual_vel[1].item():.2f}, wz={actual_ang_vel.item():.2f}")
                 print(f"实际速度与指令速度的均方误差: MSE={mse_vel:.2f}")
 
+        # Update camera to follow robot
+        camera_controller.update_camera_view()
+        
     # 关闭环境 / Close environment
     env.close()
 
