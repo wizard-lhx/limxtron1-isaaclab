@@ -28,23 +28,31 @@ def stay_alive(env: ManagerBasedRLEnv) -> torch.Tensor:
 def foot_landing_vel(
         env: ManagerBasedRLEnv,
         asset_cfg: SceneEntityCfg,
-        sensor_cfg: SceneEntityCfg,
+        contact_sensor_cfg: SceneEntityCfg,
         foot_radius: float,
         about_landing_threshold: float,
+        height_sensor_cfg: SceneEntityCfg | None=None
 ) -> torch.Tensor:
     """惩罚高足部着陆速度 - 鼓励轻柔着陆 / Penalize high foot landing velocities - encourages soft landing"""
     asset = env.scene[asset_cfg.name]
-    contact_sensor: ContactSensor = env.scene.sensors[sensor_cfg.name]
+    contact_sensor: ContactSensor = env.scene.sensors[contact_sensor_cfg.name]
+    if height_sensor_cfg is not None:
+        height_sensor: RayCaster = env.scene.sensors[height_sensor_cfg.name]
+        # Adjust the target height using the sensor data
+        terrain_height = height_sensor.data.ray_hits_w[:, :, 2].mean(dim=1)
+    else:
+        # Use the provided target height directly for flat terrain
+        terrain_height = 0.0
     
     # 获取足部Z方向速度 / Get foot Z-direction velocities
     z_vels = asset.data.body_lin_vel_w[:, asset_cfg.body_ids, 2]
     
     # 检测接触状态 / Detect contact state
-    contacts = contact_sensor.data.net_forces_w[:, sensor_cfg.body_ids, 2] > 0.1
+    contacts = contact_sensor.data.net_forces_w[:, contact_sensor_cfg.body_ids, 2] > 0.1
 
     # 计算足部高度（相对于地面）/ Calculate foot height (relative to ground)
     foot_heights = torch.clip(
-        asset.data.body_pos_w[:, asset_cfg.body_ids, 2] - foot_radius, 0, 1
+        asset.data.body_pos_w[:, asset_cfg.body_ids, 2] - terrain_height - foot_radius, 0, 1
     )  # TODO: 改为相对于地形垂直投影的高度 / TODO: change to height relative to terrain vertical projection
 
     # 检测即将着陆状态：低高度 + 无接触 + 下降速度 / Detect about-to-land state: low height + no contact + downward velocity
@@ -245,13 +253,22 @@ def feet_regulation(env: ManagerBasedRLEnv,
     asset_cfg: SceneEntityCfg,
     foot_radius: float,
     base_height_target: float,
+    sensor_cfg: SceneEntityCfg | None = None
 ) -> torch.Tensor:
     """足部调节奖励 - 惩罚足部不当运动 / Foot regulation reward - penalizes improper foot movement"""
     asset: RigidObject = env.scene[asset_cfg.name]
+
+    if sensor_cfg is not None:
+        sensor: RayCaster = env.scene[sensor_cfg.name]
+        # Adjust the target height using the sensor data
+        terrain_height = sensor.data.ray_hits_w[:, :, 2].mean(dim=1)
+    else:
+        # Use the provided target height directly for flat terrain
+        terrain_height = 0.0
     
     # 计算足部高度 / Calculate foot height
     feet_height = torch.clip(
-        asset.data.body_pos_w[:, asset_cfg.body_ids, 2] - foot_radius, 0, 1
+        asset.data.body_pos_w[:, asset_cfg.body_ids, 2] - terrain_height - foot_radius, 0, 1
     )  # TODO: 改为相对于地形垂直投影的高度 / TODO: change to height relative to terrain vertical projection
     
     # 获取足部XY方向速度 / Get foot XY-direction velocities

@@ -173,3 +173,21 @@ This project uses the following open-source libraries:
 增加视角跟踪。
 修复action异常导致训练不稳定问题
 修改reward适应楼梯环境
+1.8
+增加高度扫描传感器（训练中未成功）
+增加obs的速度观测（未成功）
+添加随机速度控制play—keyboard-vel.py和增加keyboard_control的监控窗。
+
+## 视频复现
+### task 1
+```bash
+python3 scripts/rsl_rl/play-keyboard-velocitytest.py --task=Isaac-Limx-PF-Blind-Flat-Play-v0 --checkpoint_path=/home/lhx/project/limxtron1lab-main/logs/rsl_rl/pf_tron_1a_rough/2026-01-07_16-09-41/model_9200.pt
+```
+### task 2
+```bash
+python3 scripts/rsl_rl/keyboard_control.py --task=Isaac-Limx-PF-Blind-Rough-Play-v0 --checkpoint_path=/home/lhx/project/limxtron1lab-main/logs/rsl_rl/pf_tron_1a_stair/2026-01-05_18-57-18/model_15000.pt
+```
+### task 3
+```bash
+python3 scripts/rsl_rl/play.py --task=Isaac-Limx-PF-Blind-Stair-Play-v0 --checkpoint_path=/home/lhx/project/limxtron1lab-main/logs/rsl_rl/pf_tron_1a_stair/2026-01-05_18-57-18/model_15000.pt
+```

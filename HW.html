@@ -1,0 +1,796 @@
+<!DOCTYPE html><html><head>
+      <title>HW</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////home/lhx/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.8.20/crossnote/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h2 id="1-框架理解与代码总结-code-review--architecture">1 框架理解与代码总结 (Code Review &amp; Architecture) </h2>
+<p>本项目基于 NVIDIA Isaac Lab 框架实现双足机器人的强化学习训练，采用 RSL-RL 的 PPO 算法。项目架构遵循 Isaac Lab 的模块化设计理念，将环境配置、观测管理、奖励设计、动作控制等功能解耦，便于调试和扩展。</p>
+<h3 id="11-场景配置-scene-configuration">1.1 场景配置 (Scene Configuration) </h3>
+<p>场景配置的核心是 <code>pointfoot_cfg.py</code> 中的机器人资产定义：</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>POINTFOOT_CFG <span class="token operator">=</span> ArticulationCfg<span class="token punctuation">(</span>
+    spawn<span class="token operator">=</span>sim_utils<span class="token punctuation">.</span>UsdFileCfg<span class="token punctuation">(</span>
+        usd_path<span class="token operator">=</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>LIMX_ASSETS_PATH<span class="token punctuation">}</span></span><span class="token string">/Robots/PF_TRON1A/tron1_pf.usd"</span></span><span class="token punctuation">,</span>
+        rigid_props<span class="token operator">=</span>sim_utils<span class="token punctuation">.</span>RigidBodyPropertiesCfg<span class="token punctuation">(</span>
+            disable_gravity<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+            max_linear_velocity<span class="token operator">=</span><span class="token number">1000.0</span><span class="token punctuation">,</span>
+            max_angular_velocity<span class="token operator">=</span><span class="token number">1000.0</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+        articulation_props<span class="token operator">=</span>sim_utils<span class="token punctuation">.</span>ArticulationRootPropertiesCfg<span class="token punctuation">(</span>
+            enabled_self_collisions<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+            solver_position_iteration_count<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span>
+            solver_velocity_iteration_count<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    init_state<span class="token operator">=</span>ArticulationCfg<span class="token punctuation">.</span>InitialStateCfg<span class="token punctuation">(</span>
+        pos<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.95</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># 初始位置 [m]</span>
+        joint_pos<span class="token operator">=</span><span class="token punctuation">{</span>
+            <span class="token string">"abad_L_Joint"</span><span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token string">"abad_R_Joint"</span><span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span>
+            <span class="token string">"hip_L_Joint"</span><span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token string">"hip_R_Joint"</span><span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span>
+            <span class="token string">"knee_L_Joint"</span><span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token string">"knee_R_Joint"</span><span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    actuators<span class="token operator">=</span><span class="token punctuation">{</span>
+        <span class="token string">"legs"</span><span class="token punctuation">:</span> ImplicitActuatorCfg<span class="token punctuation">(</span>
+            joint_names_expr<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"abad_.*"</span><span class="token punctuation">,</span> <span class="token string">"hip_.*"</span><span class="token punctuation">,</span> <span class="token string">"knee_.*"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            stiffness<span class="token operator">=</span><span class="token number">40.0</span><span class="token punctuation">,</span>      <span class="token comment"># PD控制器P增益</span>
+            damping<span class="token operator">=</span><span class="token number">2.5</span><span class="token punctuation">,</span>         <span class="token comment"># PD控制器D增益</span>
+            effort_limit<span class="token operator">=</span><span class="token number">23.7</span><span class="token punctuation">,</span>   <span class="token comment"># 力矩限制 [N⋅m]</span>
+            velocity_limit<span class="token operator">=</span><span class="token number">21.0</span><span class="token punctuation">,</span> <span class="token comment"># 速度限制 [rad/s]</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+</code></pre><p><strong>关键配置说明：</strong></p>
+<ul>
+<li><strong>USD加载</strong>：<code>usd_path</code> 指定机器人3D模型文件</li>
+<li><strong>物理属性</strong>：<code>solver_position_iteration_count=4</code> 控制求解器迭代次数，影响仿真精度</li>
+<li><strong>执行器模型</strong>：<code>ImplicitActuatorCfg</code> 定义内置PD控制器，<code>stiffness</code> 和 <code>damping</code> 参数直接决定关节响应特性</li>
+<li><strong>正则匹配</strong>：<code>joint_names_expr=["abad_.*", ...]</code> 使用正则表达式批量匹配关节，简化配置</li>
+</ul>
+<hr>
+<h3 id="12-观测管理器-observation-manager">1.2 观测管理器 (Observation Manager) </h3>
+<p>观测管理器负责构建不同网络的观测空间，位于 <code>limx_base_env_cfg.py</code> 的 <code>ObservarionsCfg</code> 类中，包含4个观测组：</p>
+<h4 id="121-策略网络观测-policycfg">1.2.1 策略网络观测 (PolicyCfg) </h4>
+<p>策略网络仅接收<strong>真实机器人可测量</strong>的传感器数据：</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">PolicyCfg</span><span class="token punctuation">(</span>ObsGroup<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 基座测量</span>
+    base_ang_vel <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>
+        func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>base_ang_vel<span class="token punctuation">,</span>
+        noise<span class="token operator">=</span>GaussianNoise<span class="token punctuation">(</span>mean<span class="token operator">=</span><span class="token number">0.0</span><span class="token punctuation">,</span> std<span class="token operator">=</span><span class="token number">0.05</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># 5%噪声</span>
+        clip<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">100.0</span><span class="token punctuation">,</span> <span class="token number">100.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        scale<span class="token operator">=</span><span class="token number">0.25</span><span class="token punctuation">,</span>  <span class="token comment"># 缩放到合适范围</span>
+    <span class="token punctuation">)</span>
+    proj_gravity <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>
+        func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>projected_gravity<span class="token punctuation">,</span>
+        noise<span class="token operator">=</span>GaussianNoise<span class="token punctuation">(</span>mean<span class="token operator">=</span><span class="token number">0.0</span><span class="token punctuation">,</span> std<span class="token operator">=</span><span class="token number">0.025</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+    
+    <span class="token comment"># 关节状态</span>
+    joint_pos <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>joint_pos_rel<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+    joint_vel <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>joint_vel<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+    
+    <span class="token comment"># 步态信息</span>
+    last_action <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>last_action<span class="token punctuation">)</span>
+    gait_phase <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>get_gait_phase<span class="token punctuation">)</span>
+    gait_command <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>get_gait_command<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+</code></pre><p><strong>设计要点：</strong></p>
+<ul>
+<li><strong>噪声模拟真实传感器</strong>：<code>GaussianNoise</code> 模拟IMU/编码器测量误差</li>
+<li><strong>无线速度</strong>：策略网络不使用 <code>base_lin_vel</code>（真实机器人难以准确测量），训练时强制策略学会不依赖此信息</li>
+<li><strong>Clip保护</strong>：<code>clip=(-100.0, 100.0)</code> 防止异常值破坏训练</li>
+</ul>
+<h4 id="122-历史观测-historyobscfg">1.2.2 历史观测 (HistoryObsCfg) </h4>
+<p>用于编码器网络处理时序信息：</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">HistoryObsCfg</span><span class="token punctuation">(</span>ObsGroup<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 与PolicyCfg相同的观测项</span>
+    base_ang_vel <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+    proj_gravity <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+    joint_pos <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+    joint_vel <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword keyword-def">def</span> <span class="token function">__post_init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>history_length <span class="token operator">=</span> <span class="token number">10</span>          <span class="token comment"># 保存10步历史</span>
+        self<span class="token punctuation">.</span>flatten_history_dim <span class="token operator">=</span> <span class="token boolean">False</span>  <span class="token comment"># 保持时序维度</span>
+</code></pre><p><strong>功能说明：</strong></p>
+<ul>
+<li><strong>时序建模</strong>：编码器网络使用10步历史（0.2秒）预测基座速度</li>
+<li><strong>维度处理</strong>：<code>flatten_history_dim=False</code> 保留 <code>[batch, history, obs_dim]</code> 结构</li>
+</ul>
+<h4 id="123-评价网络观测-criticcfg">1.2.3 评价网络观测 (CriticCfg) </h4>
+<p>包含<strong>策略观测 + 特权信息</strong>：</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">CriticCfg</span><span class="token punctuation">(</span>ObsGroup<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 策略可见的观测</span>
+    base_lin_vel <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>base_lin_vel<span class="token punctuation">)</span>  <span class="token comment"># 特权！</span>
+    base_ang_vel <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>base_ang_vel<span class="token punctuation">)</span>
+    joint_pos <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>joint_pos_rel<span class="token punctuation">)</span>
+    
+    <span class="token comment"># 特权信息（仅仿真可获取）</span>
+    robot_joint_torque <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>robot_joint_torque<span class="token punctuation">)</span>
+    robot_mass <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>robot_mass<span class="token punctuation">)</span>
+    robot_inertia <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>robot_inertia<span class="token punctuation">)</span>
+    robot_vel <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>robot_vel<span class="token punctuation">)</span>  <span class="token comment"># 完整6维速度</span>
+    heights <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>height_scan<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword keyword-def">def</span> <span class="token function">__post_init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>enable_corruption <span class="token operator">=</span> <span class="token boolean">False</span>  <span class="token comment"># 特权信息无噪声</span>
+</code></pre><p><strong>特权信息的作用：</strong></p>
+<ol>
+<li><strong>价值估计更准确</strong>：Critic利用完整信息提供更精确的TD目标</li>
+<li><strong>加速训练</strong>：更好的价值估计减少方差，提升样本效率</li>
+<li><strong>Sim-to-Real桥梁</strong>：训练时使用，部署时仅需Actor（不需要特权信息）</li>
+</ol>
+<h4 id="124-噪声注入机制">1.2.4 噪声注入机制 </h4>
+<p>噪声注入通过 <code>GaussianNoise</code> 和 <code>enable_corruption</code> 控制：</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 训练时注入噪声</span>
+base_ang_vel <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>
+    func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>base_ang_vel<span class="token punctuation">,</span>
+    noise<span class="token operator">=</span>GaussianNoise<span class="token punctuation">(</span>mean<span class="token operator">=</span><span class="token number">0.0</span><span class="token punctuation">,</span> std<span class="token operator">=</span><span class="token number">0.05</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># 添加5%标准差噪声</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment"># 测试时可关闭</span>
+self<span class="token punctuation">.</span>observations<span class="token punctuation">.</span>policy<span class="token punctuation">.</span>enable_corruption <span class="token operator">=</span> <span class="token boolean">False</span>
+</code></pre><p><strong>噪声策略：</strong></p>
+<ul>
+<li><strong>策略观测</strong>：<code>enable_corruption=True</code>，模拟传感器误差</li>
+<li><strong>评价观测</strong>：<code>enable_corruption=False</code>，使用干净数据</li>
+<li><strong>Scale归一化</strong>：不同观测项使用不同 <code>scale</code>，例如 <code>joint_vel</code> 使用 <code>scale=0.05</code> 将速度缩放到 <code>[-5, 5]</code> 范围</li>
+</ul>
+<h4 id="125-观测空间维度">1.2.5 观测空间维度 </h4>
+<table>
+<thead>
+<tr>
+<th>观测组</th>
+<th>维度</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Policy</td>
+<td>20维</td>
+<td>Actor输入</td>
+</tr>
+<tr>
+<td>History</td>
+<td>10×20维</td>
+<td>Encoder输入</td>
+</tr>
+<tr>
+<td>Critic</td>
+<td>80维</td>
+<td>Value估计</td>
+</tr>
+<tr>
+<td>Commands</td>
+<td>3维</td>
+<td>速度命令</td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据流向：</strong></p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>环境状态
+  ├→ Policy观测 → Actor → 动作
+  ├→ History观测 → Encoder → 速度估计 → Actor
+  └→ Critic观测 → Critic → 价值估计 → PPO更新
+</code></pre><hr>
+<h3 id="13-奖励管理器-reward-manager">1.3 奖励管理器 (Reward Manager) </h3>
+<p>奖励管理器定义强化学习的优化目标，位于 <code>limx_base_env_cfg.py</code> 的 <code>RewardsCfg</code> 类。奖励项可分为三类：<strong>跟踪奖励</strong>、<strong>调节奖励</strong>、<strong>惩罚项</strong>。</p>
+<h4 id="131-核心奖励项">1.3.1 核心奖励项 </h4>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">RewardsCfg</span><span class="token punctuation">:</span>
+    <span class="token comment"># 速度跟踪 (正奖励)</span>
+    rew_lin_vel_xy <span class="token operator">=</span> RewTerm<span class="token punctuation">(</span>
+        func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>track_lin_vel_xy_exp<span class="token punctuation">,</span>
+        weight<span class="token operator">=</span><span class="token number">3.0</span><span class="token punctuation">,</span>  <span class="token comment"># 最高权重 - 主要训练目标</span>
+        params<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"std"</span><span class="token punctuation">:</span> math<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span><span class="token number">0.2</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+    <span class="token punctuation">)</span>
+    
+    rew_ang_vel_z <span class="token operator">=</span> RewTerm<span class="token punctuation">(</span>
+        func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>track_ang_vel_z_exp<span class="token punctuation">,</span>
+        weight<span class="token operator">=</span><span class="token number">1.5</span><span class="token punctuation">,</span>  <span class="token comment"># 次要目标：转向控制</span>
+    <span class="token punctuation">)</span>
+    
+    <span class="token comment"># 保持双足接触地面</span>
+    rew_no_fly <span class="token operator">=</span> RewTerm<span class="token punctuation">(</span>
+        func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>no_fly<span class="token punctuation">,</span>
+        weight<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">,</span>
+        params<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"threshold"</span><span class="token punctuation">:</span> <span class="token number">5.0</span><span class="token punctuation">}</span>  <span class="token comment"># 最少5N接触力</span>
+    <span class="token punctuation">)</span>
+    
+    <span class="token comment"># 姿态调节 (负奖励 = 惩罚)</span>
+    pen_flat_orientation <span class="token operator">=</span> RewTerm<span class="token punctuation">(</span>
+        func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>flat_orientation_l2<span class="token punctuation">,</span>  <span class="token comment"># 保持机身水平</span>
+        weight<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1.0</span>
+    <span class="token punctuation">)</span>
+    
+    pen_base_height <span class="token operator">=</span> RewTerm<span class="token punctuation">(</span>
+        func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>base_com_height<span class="token punctuation">,</span>
+        weight<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">,</span>
+        params<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"target_height"</span><span class="token punctuation">:</span> <span class="token number">0.78</span><span class="token punctuation">}</span>  <span class="token comment"># 目标高度78cm</span>
+    <span class="token punctuation">)</span>
+    
+    <span class="token comment"># 动作平滑性</span>
+    pen_action_rate <span class="token operator">=</span> RewTerm<span class="token punctuation">(</span>
+        func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>action_rate_l2<span class="token punctuation">,</span>
+        weight<span class="token operator">=</span><span class="token operator">-</span><span class="token number">0.01</span>  <span class="token comment"># 惩罚动作变化率</span>
+    <span class="token punctuation">)</span>
+    
+    <span class="token comment"># 步态奖励</span>
+    test_gait_reward <span class="token operator">=</span> RewTerm<span class="token punctuation">(</span>
+        func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>GaitReward<span class="token punctuation">,</span>
+        weight<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">,</span>
+        params<span class="token operator">=</span><span class="token punctuation">{</span>
+            <span class="token string">"gait_force_sigma"</span><span class="token punctuation">:</span> <span class="token number">25.0</span><span class="token punctuation">,</span>
+            <span class="token string">"gait_vel_sigma"</span><span class="token punctuation">:</span> <span class="token number">0.25</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">)</span>
+</code></pre><h4 id="132-权重影响分析">1.3.2 权重影响分析 </h4>
+<table>
+<thead>
+<tr>
+<th>奖励项</th>
+<th>权重</th>
+<th>影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rew_lin_vel_xy</code></td>
+<td>3.0</td>
+<td>主导训练方向，权重最高确保速度跟踪优先</td>
+</tr>
+<tr>
+<td><code>rew_ang_vel_z</code></td>
+<td>1.5</td>
+<td>平衡直线速度与转向能力</td>
+</tr>
+<tr>
+<td><code>pen_flat_orientation</code></td>
+<td>-1.0</td>
+<td>防止机身翻滚，保证稳定性</td>
+</tr>
+<tr>
+<td><code>pen_joint_torque</code></td>
+<td>-2e-5</td>
+<td>轻微惩罚，鼓励节能但不影响主要任务</td>
+</tr>
+<tr>
+<td><code>pen_action_rate</code></td>
+<td>-0.01</td>
+<td>平滑动作变化，减少震荡</td>
+</tr>
+</tbody>
+</table>
+<p><strong>权重调整原则：</strong></p>
+<ol>
+<li><strong>跟踪类奖励</strong>：正权重较大（1.0-3.0），驱动目标行为</li>
+<li><strong>正则化惩罚</strong>：小权重（1e-5级别），避免过度限制</li>
+<li><strong>稳定性惩罚</strong>：中等权重（0.5-1.0），保证基本约束</li>
+<li><strong>权重比例</strong>：跟踪奖励 : 稳定性 : 正则化 ≈ 10 : 5 : 1</li>
+</ol>
+<hr>
+<h3 id="14-动作管理器-action-manager">1.4 动作管理器 (Action Manager) </h3>
+<p>动作管理器定义强化学习策略的输出如何转换为机器人的实际控制指令，涉及<strong>动作空间设计</strong>、<strong>执行器模型</strong>和<strong>PD控制器参数</strong>。</p>
+<h4 id="141-动作空间定义">1.4.1 动作空间定义 </h4>
+<p>动作配置位于 <code>limx_base_env_cfg.py</code> 的 <code>ActionsCfg</code> 类：</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token decorator annotation punctuation">@configclass</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">ActionsCfg</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""动作规范配置类 / Action specifications"""</span>
+    
+    joint_pos <span class="token operator">=</span> mdp<span class="token punctuation">.</span>JointPositionActionCfg<span class="token punctuation">(</span>
+        asset_name<span class="token operator">=</span><span class="token string">"robot"</span><span class="token punctuation">,</span>
+        joint_names<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"abad_L_Joint"</span><span class="token punctuation">,</span> <span class="token string">"abad_R_Joint"</span><span class="token punctuation">,</span> 
+                    <span class="token string">"hip_L_Joint"</span><span class="token punctuation">,</span> <span class="token string">"hip_R_Joint"</span><span class="token punctuation">,</span> 
+                    <span class="token string">"knee_L_Joint"</span><span class="token punctuation">,</span> <span class="token string">"knee_R_Joint"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        scale<span class="token operator">=</span><span class="token number">0.25</span><span class="token punctuation">,</span>              <span class="token comment"># 动作缩放因子</span>
+        use_default_offset<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token comment"># 使用默认关节位置作为偏移</span>
+    <span class="token punctuation">)</span>
+</code></pre><p><strong>关键参数解析：</strong></p>
+<ol>
+<li>
+<p><strong>动作类型</strong>：<code>JointPositionActionCfg</code> - 关节位置控制</p>
+<ul>
+<li>Actor输出：6维向量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><mo stretchy="false">[</mo><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><msup><mo stretchy="false">]</mo><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">a \in [-1, 1]^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose"><span class="mclose">]</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span>（已由tanh激活函数归一化）</li>
+<li>实际指令：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mrow><mi>t</mi><mi>a</mi><mi>r</mi><mi>g</mi><mi>e</mi><mi>t</mi></mrow></msub><mo>=</mo><msub><mi>q</mi><mrow><mi>d</mi><mi>e</mi><mi>f</mi><mi>a</mi><mi>u</mi><mi>l</mi><mi>t</mi></mrow></msub><mo>+</mo><mi>s</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>e</mi><mo>×</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">q_{target} = q_{default} + scale \times a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">lt</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">sc</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span></li>
+</ul>
+</li>
+<li>
+<p><strong>默认偏移 (use_default_offset=True)</strong>：</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 默认关节位置（站立姿态）</span>
+q_default <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">]</span>  <span class="token comment"># 对应abad_L/R, hip_L/R, knee_L/R</span>
+
+<span class="token comment"># 实际目标位置</span>
+q_target <span class="token operator">=</span> q_default <span class="token operator">+</span> <span class="token number">0.25</span> <span class="token operator">*</span> action
+</code></pre><p>这样策略输出接近零时，机器人保持默认站立姿态。</p>
+</li>
+</ol>
+<h4 id="142-执行器模型---pd控制器">1.4.2 执行器模型 - PD控制器 </h4>
+<p>执行器配置在 <code>pointfoot_cfg.py</code> 中，使用 <code>ImplicitActuatorCfg</code> 定义内置PD控制器：</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>actuators <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">"legs"</span><span class="token punctuation">:</span> ImplicitActuatorCfg<span class="token punctuation">(</span>
+        joint_names_expr<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"abad_.*"</span><span class="token punctuation">,</span> <span class="token string">"hip_.*"</span><span class="token punctuation">,</span> <span class="token string">"knee_.*"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        
+        <span class="token comment"># PD控制器参数</span>
+        stiffness<span class="token operator">=</span><span class="token number">40.0</span><span class="token punctuation">,</span>      <span class="token comment"># P增益 (Kp)</span>
+        damping<span class="token operator">=</span><span class="token number">2.5</span><span class="token punctuation">,</span>         <span class="token comment"># D增益 (Kd)</span>
+        
+        <span class="token comment"># 物理限制</span>
+        effort_limit<span class="token operator">=</span><span class="token number">300.0</span><span class="token punctuation">,</span>      <span class="token comment"># 最大力矩 300 N⋅m</span>
+        velocity_limit<span class="token operator">=</span><span class="token number">100.0</span><span class="token punctuation">,</span>    <span class="token comment"># 最大速度 100 rad/s</span>
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre><p><strong>PD控制原理：</strong></p>
+<p>执行器力矩计算公式：<br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>τ</mi><mo>=</mo><msub><mi>K</mi><mi>p</mi></msub><mo stretchy="false">(</mo><msub><mi>q</mi><mrow><mi>t</mi><mi>a</mi><mi>r</mi><mi>g</mi><mi>e</mi><mi>t</mi></mrow></msub><mo>−</mo><msub><mi>q</mi><mrow><mi>c</mi><mi>u</mi><mi>r</mi><mi>r</mi><mi>e</mi><mi>n</mi><mi>t</mi></mrow></msub><mo stretchy="false">)</mo><mo>−</mo><msub><mi>K</mi><mi>d</mi></msub><msub><mover accent="true"><mi>q</mi><mo>˙</mo></mover><mrow><mi>c</mi><mi>u</mi><mi>r</mi><mi>r</mi><mi>e</mi><mi>n</mi><mi>t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\tau = K_p (q_{target} - q_{current}) - K_d \dot{q}_{current}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">rre</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.0556em;"><span class="mord">˙</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">rre</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>其中：</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>p</mi></msub><mo>=</mo><mn>40.0</mn></mrow><annotation encoding="application/x-tex">K_p = 40.0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">40.0</span></span></span></span>：位置误差增益（刚度）</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>d</mi></msub><mo>=</mo><mn>2.5</mn></mrow><annotation encoding="application/x-tex">K_d = 2.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2.5</span></span></span></span>：速度阻尼增益</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mrow><mi>t</mi><mi>a</mi><mi>r</mi><mi>g</mi><mi>e</mi><mi>t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">q_{target}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>：策略输出的目标位置</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mrow><mi>c</mi><mi>u</mi><mi>r</mi><mi>r</mi><mi>e</mi><mi>n</mi><mi>t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">q_{current}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">rre</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：当前关节位置</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>q</mi><mo>˙</mo></mover><mrow><mi>c</mi><mi>u</mi><mi>r</mi><mi>r</mi><mi>e</mi><mi>n</mi><mi>t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\dot{q}_{current}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8623em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.0556em;"><span class="mord">˙</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">rre</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：当前关节速度</li>
+</ul>
+<p><strong>参数影响分析：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+<th>影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stiffness</code> (Kp)</td>
+<td>40.0</td>
+<td>中等刚度，平衡响应速度与稳定性</td>
+</tr>
+<tr>
+<td><code>damping</code> (Kd)</td>
+<td>2.5</td>
+<td>轻微阻尼，避免过冲</td>
+</tr>
+<tr>
+<td><code>effort_limit</code></td>
+<td>300 N⋅m</td>
+<td>保护电机，防止过载</td>
+</tr>
+<tr>
+<td><code>scale</code></td>
+<td>0.25</td>
+<td>限制动作幅度，提升安全性</td>
+</tr>
+</tbody>
+</table>
+<p><strong>参数调优分析：</strong></p>
+<ol>
+<li>
+<p><strong>刚度 (Kp) 调整</strong>：</p>
+<ul>
+<li><strong>过小</strong> (&lt; 20)：关节响应慢，跟踪误差大，机器人"软绵绵"</li>
+<li><strong>过大</strong> (&gt; 80)：关节震荡，仿真不稳定，真实硬件易损坏</li>
+<li><strong>推荐范围</strong>：30-50 N⋅m/rad 适合双足机器人</li>
+</ul>
+</li>
+<li>
+<p><strong>阻尼 (Kd) 调整</strong>：</p>
+<ul>
+<li><strong>经验法则</strong>：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>d</mi></msub><mo>≈</mo><mn>2</mn><msqrt><mrow><msub><mi>K</mi><mi>p</mi></msub><mo>×</mo><mi>m</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">K_d \approx 2\sqrt{K_p \times m}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.3564em;"></span><span class="mord">2</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8836em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">m</span></span></span><span style="top:-2.8436em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3564em;"><span></span></span></span></span></span></span></span></span>（临界阻尼）</li>
+<li>对于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>p</mi></msub><mo>=</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">K_p=40</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">40</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>d</mi></msub><mo>≈</mo><mn>2</mn><mo>−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">K_d \approx 2-4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span> 为合适范围</li>
+<li><strong>过小</strong>：欠阻尼，产生震荡</li>
+<li><strong>过大</strong>：过阻尼，响应迟钝</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-平地速度跟随-flat-terrain-velocity-tracking">2 平地速度跟随 (Flat Terrain Velocity Tracking) </h2>
+<h3 id="21-环境搭建">2.1 环境搭建 </h3>
+<p><strong>任务目标</strong>：训练机器人在平坦地面上跟随给定的速度指令（前进、后退、转向）。</p>
+<h4 id="211-环境配置类选择">2.1.1 环境配置类选择 </h4>
+<p>任务注册使用 <code>PFBlindFlatEnvCfg</code> 配置类：</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># exts/bipedal_locomotion/bipedal_locomotion/tasks/locomotion/robots/__init__.py</span>
+gym<span class="token punctuation">.</span>register<span class="token punctuation">(</span>
+    <span class="token builtin">id</span><span class="token operator">=</span><span class="token string">"Isaac-Limx-PF-Flat-v0"</span><span class="token punctuation">,</span>
+    entry_point<span class="token operator">=</span><span class="token string">"isaaclab.envs:ManagerBasedRLEnv"</span><span class="token punctuation">,</span>
+    kwargs<span class="token operator">=</span><span class="token punctuation">{</span>
+        <span class="token string">"env_cfg_entry_point"</span><span class="token punctuation">:</span> limx_pointfoot_env_cfg<span class="token punctuation">.</span>PFBlindFlatEnvCfg<span class="token punctuation">,</span>
+        <span class="token string">"rsl_rl_cfg_entry_point"</span><span class="token punctuation">:</span> limx_pf_flat_runner_cfg<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+</code></pre><h4 id="212-地形配置">2.1.2 地形配置 </h4>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token decorator annotation punctuation">@configclass</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">PFBlindFlatEnvCfg</span><span class="token punctuation">(</span>PFBaseEnvCfg<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-def">def</span> <span class="token function">__post_init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__post_init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 禁用高度扫描传感器</span>
+        self<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>height_scanner <span class="token operator">=</span> <span class="token boolean">None</span>
+        self<span class="token punctuation">.</span>observations<span class="token punctuation">.</span>policy<span class="token punctuation">.</span>heights <span class="token operator">=</span> <span class="token boolean">None</span>
+        self<span class="token punctuation">.</span>observations<span class="token punctuation">.</span>critic<span class="token punctuation">.</span>heights <span class="token operator">=</span> <span class="token boolean">None</span>
+        
+        <span class="token comment"># 禁用地形难度课程</span>
+        self<span class="token punctuation">.</span>curriculum<span class="token punctuation">.</span>terrain_levels <span class="token operator">=</span> <span class="token boolean">None</span>
+        
+        <span class="token comment"># 保持默认平坦地形（TerrainImporter with plane）</span>
+        <span class="token comment"># terrain_type = "plane" (继承自父类)</span>
+</code></pre><p><strong>设计要点：</strong></p>
+<ul>
+<li><strong>纯平地</strong>：<code>terrain_type="plane"</code>，确保无地形起伏干扰</li>
+<li><strong>无视觉输入</strong>：移除 <code>heights</code> 观测，策略完全依赖本体感知</li>
+<li><strong>简化任务</strong>：专注于速度控制，不考虑地形适应</li>
+</ul>
+<h4 id="213-速度命令配置">2.1.3 速度命令配置 </h4>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-def">def</span> <span class="token function">sample_cmd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-return">return</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span>
+        rng<span class="token punctuation">.</span>uniform<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1.2</span><span class="token punctuation">,</span> <span class="token number">1.2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># vx</span>
+        rng<span class="token punctuation">.</span>uniform<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1.2</span><span class="token punctuation">,</span> <span class="token number">1.2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># vy</span>
+        rng<span class="token punctuation">.</span>uniform<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1.2</span><span class="token punctuation">,</span> <span class="token number">1.2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># wz</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>np<span class="token punctuation">.</span>float32<span class="token punctuation">)</span>
+</code></pre><p><strong>关键设计</strong>：</p>
+<ul>
+<li><strong>前进/后退</strong>：<code>lin_vel_x ∈ [-1.0, 1.0]</code> 涵盖常用速度范围</li>
+<li><strong>原地转向</strong>：<code>ang_vel_z ∈ [-1.0, 1.0]</code> 支持灵活转向</li>
+<li><strong>禁用横向</strong>：<code>lin_vel_y = 0</code>，简化平地任务（双足机器人横向移动困难）</li>
+<li><strong>定期更换</strong>：每10秒重采样，增加训练多样性</li>
+</ul>
+<hr>
+<h3 id="22-奖励函数设计思路">2.2 奖励函数设计思路 </h3>
+<p>奖励函数采用<strong>分层设计</strong>：主任务奖励（速度跟踪）+ 稳定性约束（姿态、高度）+ 正则化惩罚（平滑性、能效）。</p>
+<h4 id="221-核心奖励项">2.2.1 核心奖励项 </h4>
+<p><strong>速度跟踪（主任务）</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>rew_lin_vel_xy <span class="token operator">=</span> RewTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>track_lin_vel_xy_exp<span class="token punctuation">,</span> weight<span class="token operator">=</span><span class="token number">3.0</span><span class="token punctuation">)</span>  <span class="token comment"># 线速度</span>
+rew_ang_vel_z <span class="token operator">=</span> RewTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>track_ang_vel_z_exp<span class="token punctuation">,</span> weight<span class="token operator">=</span><span class="token number">1.5</span><span class="token punctuation">)</span>    <span class="token comment"># 角速度</span>
+</code></pre><ul>
+<li>使用指数形式 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><mo>−</mo><mfrac><mrow><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi>v</mi><mo>−</mo><msub><mi>v</mi><mrow><mi>c</mi><mi>m</mi><mi>d</mi></mrow></msub><mi mathvariant="normal">∣</mi><msup><mi mathvariant="normal">∣</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><msup><mi>σ</mi><mn>2</mn></msup></mrow></mfrac><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r = \exp(-\frac{||v - v_{cmd}||^2}{2\sigma^2})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.4539em;vertical-align:-0.345em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1089em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7463em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∣∣</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:-0.0359em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">m</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1512em;"><span></span></span></span></span></span></span><span class="mord mtight">∣</span><span class="mord mtight"><span class="mord mtight">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span>，梯度平滑</li>
+<li>权重比 2:1 确保直行优先于转向</li>
+</ul>
+<p><strong>稳定性约束</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>pen_flat_orientation <span class="token operator">=</span> RewTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>flat_orientation_l2<span class="token punctuation">,</span> weight<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">)</span>  <span class="token comment"># 保持水平</span>
+pen_base_height <span class="token operator">=</span> RewTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>base_com_height<span class="token punctuation">,</span> weight<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">,</span> 
+                         params<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"target_height"</span><span class="token punctuation">:</span> <span class="token number">0.78</span><span class="token punctuation">}</span><span class="token punctuation">)</span>  <span class="token comment"># 维持78cm高度</span>
+rew_no_fly <span class="token operator">=</span> RewTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>no_fly<span class="token punctuation">,</span> weight<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">)</span>  <span class="token comment"># 至少一足接地</span>
+</code></pre><ul>
+<li>防止前倾滑行、跳跃等异常行为</li>
+<li>权重与任务奖励相当</li>
+</ul>
+<p><strong>正则化</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>pen_action_rate <span class="token operator">=</span> RewTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>action_rate_l2<span class="token punctuation">,</span> weight<span class="token operator">=</span><span class="token operator">-</span><span class="token number">0.01</span><span class="token punctuation">)</span>     <span class="token comment"># 动作平滑</span>
+pen_joint_torque <span class="token operator">=</span> RewTerm<span class="token punctuation">(</span>func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>joint_torques_l2<span class="token punctuation">,</span> weight<span class="token operator">=</span><span class="token operator">-</span><span class="token number">2e-5</span><span class="token punctuation">)</span>  <span class="token comment"># 节能</span>
+</code></pre><ul>
+<li>小权重避免过度限制，仅在满足主要目标后起作用</li>
+</ul>
+<h4 id="222-权重配置">2.2.2 权重配置 </h4>
+<table>
+<thead>
+<tr>
+<th>奖励项</th>
+<th>权重</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rew_lin_vel_xy</code></td>
+<td>3.0</td>
+<td>主任务：前进速度</td>
+</tr>
+<tr>
+<td><code>rew_ang_vel_z</code></td>
+<td>1.5</td>
+<td>主任务：转向</td>
+</tr>
+<tr>
+<td><code>pen_flat_orientation</code></td>
+<td>-1.0</td>
+<td>约束：姿态</td>
+</tr>
+<tr>
+<td><code>pen_base_height</code></td>
+<td>-1.0</td>
+<td>约束：高度</td>
+</tr>
+<tr>
+<td><code>rew_no_fly</code></td>
+<td>1.0</td>
+<td>约束：接触</td>
+</tr>
+<tr>
+<td><code>pen_action_rate</code></td>
+<td>-0.01</td>
+<td>优化：平滑性</td>
+</tr>
+<tr>
+<td><code>pen_joint_torque</code></td>
+<td>-2e-5</td>
+<td>优化：能效</td>
+</tr>
+</tbody>
+</table>
+<p><strong>权重比例</strong>：任务奖励 : 稳定性 : 正则化 ≈ 4.5 : 2.5 : 0.01</p>
+<h3 id="23-参数调整">2.3 参数调整 </h3>
+<p>当速度追踪权重太低，机器人站着不动，无法跟随速度指令</p>
+<ul>
+<li>解决：提升速度跟踪奖励，rew_lin_vel_xy 权重（1.5→3.0），恢复机器人运动积极性</li>
+</ul>
+<h3 id="24-训练曲线和最终效果">2.4 训练曲线和最终效果 </h3>
+<p><img src="./image/flat_train.png" alt="flat"></p>
+<center><i>图1: 平地训练曲线</i></center>
+<p><img src="./image/velocity_tracking.png" alt="track_vel"></p>
+<center><i>图2: 机器人速度跟踪曲线</i></center>
+<h2 id="3-抗干扰鲁棒性测试-disturbance-robustness-test">3 抗干扰鲁棒性测试 (Disturbance Robustness Test) </h2>
+<h3 id="31-环境搭建">3.1 环境搭建 </h3>
+<h4 id="311-外力扰动配置">3.1.1 外力扰动配置： </h4>
+<p>Isaac Lab通过 <code>EventTerm</code> 实现周期性推力扰动</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token decorator annotation punctuation">@configclass</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">EventsCfg</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""事件配置 - 定义环境随机化和扰动"""</span>
+    
+    <span class="token comment"># 外力推动事件</span>
+    push_robot <span class="token operator">=</span> EventTerm<span class="token punctuation">(</span>
+        func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>push_by_setting_velocity<span class="token punctuation">,</span>
+        mode<span class="token operator">=</span><span class="token string">"interval"</span><span class="token punctuation">,</span>  <span class="token comment"># 周期触发</span>
+        interval_range_s<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">5.0</span><span class="token punctuation">,</span> <span class="token number">8.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># 每5-8秒推一次</span>
+        params<span class="token operator">=</span><span class="token punctuation">{</span>
+            <span class="token string">"velocity_range"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                <span class="token string">"x"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token comment"># 前后方向推力：±1.0 m/s</span>
+                <span class="token string">"y"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token comment"># 左右方向推力：±1.0 m/s</span>
+                <span class="token string">"z"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>    <span class="token comment"># 禁用垂直方向</span>
+                <span class="token string">"roll"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token string">"pitch"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token string">"yaw"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span>  <span class="token comment"># 旋转扰动：±0.5 rad/s</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">)</span>
+</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li><strong>interval_range_s</strong>：扰动间隔5-8秒，给机器人恢复时间</li>
+<li><strong>velocity_range</strong>：直接设置基座速度而非施加力，效果更明显</li>
+<li><strong>x, y方向</strong>：±1.0 m/s 相当于受到约50N的瞬时推力（对15kg机器人）</li>
+<li><strong>yaw扰动</strong>：±0.5 rad/s 旋转干扰，测试姿态恢复能力</li>
+</ul>
+<h4 id="312-domain-randomization配置">3.1.2 Domain Randomization配置 </h4>
+<p>在测试环境中同时启用多种随机化，增强鲁棒性验证：</p>
+<p><strong>A. 质量随机化</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>add_base_mass <span class="token operator">=</span> EventTerm<span class="token punctuation">(</span>
+    func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>randomize_rigid_body_mass<span class="token punctuation">,</span>
+    mode<span class="token operator">=</span><span class="token string">"startup"</span><span class="token punctuation">,</span>  <span class="token comment"># 每个episode开始时随机</span>
+    params<span class="token operator">=</span><span class="token punctuation">{</span>
+        <span class="token string">"asset_cfg"</span><span class="token punctuation">:</span> SceneEntityCfg<span class="token punctuation">(</span><span class="token string">"robot"</span><span class="token punctuation">,</span> body_names<span class="token operator">=</span><span class="token string">"base_Link"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">"mass_distribution_params"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2.0</span><span class="token punctuation">,</span> <span class="token number">3.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># -2kg ~ +3kg</span>
+        <span class="token string">"operation"</span><span class="token punctuation">:</span> <span class="token string">"add"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+</code></pre><ul>
+<li><strong>作用</strong>：模拟负载变化（背包、传感器等）</li>
+<li><strong>范围</strong>：基座质量12kg → 10-15kg</li>
+</ul>
+<p><strong>B. 摩擦力随机化</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>randomize_friction <span class="token operator">=</span> EventTerm<span class="token punctuation">(</span>
+    func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>randomize_rigid_body_material<span class="token punctuation">,</span>
+    mode<span class="token operator">=</span><span class="token string">"startup"</span><span class="token punctuation">,</span>
+    params<span class="token operator">=</span><span class="token punctuation">{</span>
+        <span class="token string">"asset_cfg"</span><span class="token punctuation">:</span> SceneEntityCfg<span class="token punctuation">(</span><span class="token string">"robot"</span><span class="token punctuation">,</span> body_names<span class="token operator">=</span><span class="token string">".*foot.*"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">"static_friction_range"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token number">0.4</span><span class="token punctuation">,</span> <span class="token number">1.2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token comment"># 静摩擦系数</span>
+        <span class="token string">"dynamic_friction_range"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token number">0.4</span><span class="token punctuation">,</span> <span class="token number">1.2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># 动摩擦系数</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+</code></pre><ul>
+<li><strong>作用</strong>：模拟不同地面（湿滑、粗糙）</li>
+<li><strong>默认</strong>：μ=0.8 → 测试范围0.4-1.2</li>
+</ul>
+<p><strong>C. 执行器延迟</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>randomize_actuator_gains <span class="token operator">=</span> EventTerm<span class="token punctuation">(</span>
+    func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>randomize_actuator_gains<span class="token punctuation">,</span>
+    mode<span class="token operator">=</span><span class="token string">"startup"</span><span class="token punctuation">,</span>
+    params<span class="token operator">=</span><span class="token punctuation">{</span>
+        <span class="token string">"asset_cfg"</span><span class="token punctuation">:</span> SceneEntityCfg<span class="token punctuation">(</span><span class="token string">"robot"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">"stiffness_distribution_params"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token number">0.8</span><span class="token punctuation">,</span> <span class="token number">1.2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># Kp ±20%</span>
+        <span class="token string">"damping_distribution_params"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token number">0.8</span><span class="token punctuation">,</span> <span class="token number">1.2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>    <span class="token comment"># Kd ±20%</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+</code></pre><ul>
+<li><strong>作用</strong>：模拟电机老化、温度影响</li>
+<li><strong>Kp</strong>: 40.0 → 32-48 N⋅m/rad</li>
+<li><strong>Kd</strong>: 2.5 → 2.0-3.0 N⋅m⋅s/rad</li>
+</ul>
+<h4 id="313-测试指标定义">3.1.3 测试指标定义 </h4>
+<p>在环境中添加自定义观测项，用于量化抗干扰性能：</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token decorator annotation punctuation">@configclass</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">MetricsCfg</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""性能指标配置"""</span>
+    
+    <span class="token comment"># 恢复时间：受推后多久速度误差&lt;0.2m/s</span>
+    recovery_time <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>
+        func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>compute_recovery_time<span class="token punctuation">,</span>
+        params<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"velocity_threshold"</span><span class="token punctuation">:</span> <span class="token number">0.2</span><span class="token punctuation">}</span>
+    <span class="token punctuation">)</span>
+    
+    <span class="token comment"># 姿态偏差：推力期间最大倾角</span>
+    max_orientation_error <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>
+        func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>max_orientation_deviation
+    <span class="token punctuation">)</span>
+    
+    <span class="token comment"># 稳定性：是否摔倒</span>
+    is_fallen <span class="token operator">=</span> ObsTerm<span class="token punctuation">(</span>
+        func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>check_fallen<span class="token punctuation">,</span>
+        params<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"height_threshold"</span><span class="token punctuation">:</span> <span class="token number">0.4</span><span class="token punctuation">}</span>  <span class="token comment"># 基座&lt;40cm判定为摔倒</span>
+    <span class="token punctuation">)</span>
+</code></pre><h3 id="32-奖励函数设计和参数调整同-22">3.2 奖励函数设计和参数调整（同 2.2） </h3>
+<h2 id="4-复杂地形适应">4 复杂地形适应 </h2>
+<h3 id="41-环境搭建">4.1 环境搭建 </h3>
+<p><strong>任务目标</strong>：通过Curriculum Learning使机器人逐步适应从简单到复杂的多样地形，包括波浪地形、随机凸起和楼梯。</p>
+<h4 id="411-粗糙地形课程学习配置">4.1.1 粗糙地形课程学习配置 </h4>
+<p>Isaac Lab的 <code>TerrainGeneratorCfg</code> 支持程序化生成多种地形类型，并通过 <code>curriculum=True</code> 启用难度递增：</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>BLIND_ROUGH_TERRAINS_CFG <span class="token operator">=</span> TerrainGeneratorCfg<span class="token punctuation">(</span>
+    seed<span class="token operator">=</span><span class="token number">42</span><span class="token punctuation">,</span>
+    size<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">8.0</span><span class="token punctuation">,</span> <span class="token number">8.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>               <span class="token comment"># 每个地形块 8×8米</span>
+    num_rows<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span>                    <span class="token comment"># 10个难度等级（行）</span>
+    num_cols<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">,</span>                    <span class="token comment"># 16个地形变体（列）</span>
+    
+    sub_terrains<span class="token operator">=</span><span class="token punctuation">{</span>
+        <span class="token comment"># 1. 平地 (25%) - baseline</span>
+        <span class="token string">"flat"</span><span class="token punctuation">:</span> MeshPlaneTerrainCfg<span class="token punctuation">(</span>proportion<span class="token operator">=</span><span class="token number">0.25</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        
+        <span class="token comment"># 2. 波浪地形 (25%) - 平滑起伏</span>
+        <span class="token string">"waves"</span><span class="token punctuation">:</span> HfWaveTerrainCfg<span class="token punctuation">(</span>
+            proportion<span class="token operator">=</span><span class="token number">0.25</span><span class="token punctuation">,</span> 
+            amplitude_range<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">0.01</span><span class="token punctuation">,</span> <span class="token number">0.06</span><span class="token punctuation">)</span><span class="token punctuation">,</span>      <span class="token comment"># 1-6cm，随难度增长</span>
+            num_waves<span class="token operator">=</span><span class="token number">10</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+        
+        <span class="token comment"># 3. 随机格子 (25%) - 离散凸起</span>
+        <span class="token string">"boxes"</span><span class="token punctuation">:</span> MeshRandomGridTerrainCfg<span class="token punctuation">(</span>
+            proportion<span class="token operator">=</span><span class="token number">0.25</span><span class="token punctuation">,</span> 
+            grid_width<span class="token operator">=</span><span class="token number">0.15</span><span class="token punctuation">,</span>                   <span class="token comment"># 格子边长 15cm</span>
+            grid_height_range<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">0.01</span><span class="token punctuation">,</span> <span class="token number">0.04</span><span class="token punctuation">)</span><span class="token punctuation">,</span>    <span class="token comment"># 高度 1-4cm</span>
+            platform_width<span class="token operator">=</span><span class="token number">2.0</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+        
+        <span class="token comment"># 4. 随机粗糙 (25%) - 高频噪声</span>
+        <span class="token string">"random_rough"</span><span class="token punctuation">:</span> HfRandomUniformTerrainCfg<span class="token punctuation">(</span>
+            proportion<span class="token operator">=</span><span class="token number">0.25</span><span class="token punctuation">,</span> 
+            noise_range<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">0.01</span><span class="token punctuation">,</span> <span class="token number">0.06</span><span class="token punctuation">)</span><span class="token punctuation">,</span>          <span class="token comment"># 噪声 1-6cm</span>
+            noise_step<span class="token operator">=</span><span class="token number">0.01</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    
+    curriculum<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>                    <span class="token comment"># 启用课程学习</span>
+    difficulty_range<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>       <span class="token comment"># 难度范围 [0,1]</span>
+<span class="token punctuation">)</span>
+</code></pre><p><strong>课程学习机制</strong>：</p>
+<ul>
+<li><code>num_rows=10</code>：10个难度等级，第0行最简单（难度0.0），第9行最难（难度1.0）</li>
+<li><code>curriculum=True</code>：训练初期只使用低难度行，性能达标后自动晋升</li>
+<li><strong>晋升条件</strong>：速度误差 &lt; 0.2 m/s，持续50个episode</li>
+<li><strong>难度插值</strong>：地形参数按难度线性缩放
+<ul>
+<li>难度0.0：<code>amplitude=0.01m</code>, <code>grid_height=0.01m</code></li>
+<li>难度1.0：<code>amplitude=0.06m</code>, <code>grid_height=0.04m</code></li>
+</ul>
+</li>
+</ul>
+<p><img src="image/rough.png" alt="rough"></p>
+<h4 id="412-楼梯地形课程学习配置">4.1.2 楼梯地形课程学习配置 </h4>
+<p>楼梯环境用于训练垂直攀爬能力，包含上楼梯和下楼梯：</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>STAIRS_TERRAINS_CFG <span class="token operator">=</span> TerrainGeneratorCfg<span class="token punctuation">(</span>
+    seed<span class="token operator">=</span><span class="token number">42</span><span class="token punctuation">,</span>
+    size<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">16.0</span><span class="token punctuation">,</span> <span class="token number">16.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>                  <span class="token comment"># 更大地形块适合楼梯</span>
+    num_rows<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">,</span>                         <span class="token comment"># 8个难度等级</span>
+    num_cols<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span>
+    
+    sub_terrains<span class="token operator">=</span><span class="token punctuation">{</span>
+        <span class="token comment"># 1. 金字塔上楼梯 (40%)</span>
+        <span class="token string">"pyramid_stairs"</span><span class="token punctuation">:</span> MeshPyramidStairsTerrainCfg<span class="token punctuation">(</span>
+            proportion<span class="token operator">=</span><span class="token number">0.4</span><span class="token punctuation">,</span>
+            step_height_range<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">0.05</span><span class="token punctuation">,</span> <span class="token number">0.20</span><span class="token punctuation">)</span><span class="token punctuation">,</span>    <span class="token comment"># 台阶高度 5-20cm</span>
+            step_width<span class="token operator">=</span><span class="token number">0.3</span><span class="token punctuation">,</span>                    <span class="token comment"># 台阶宽度 30cm</span>
+            platform_width<span class="token operator">=</span><span class="token number">3.0</span><span class="token punctuation">,</span>                <span class="token comment"># 平台宽度 3m</span>
+            holes<span class="token operator">=</span><span class="token boolean">False</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+        
+        <span class="token comment"># 2. 倒金字塔下楼梯 (40%)</span>
+        <span class="token string">"pyramid_stairs_inv"</span><span class="token punctuation">:</span> MeshInvertedPyramidStairsTerrainCfg<span class="token punctuation">(</span>
+            proportion<span class="token operator">=</span><span class="token number">0.4</span><span class="token punctuation">,</span>
+            step_height_range<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">0.05</span><span class="token punctuation">,</span> <span class="token number">0.20</span><span class="token punctuation">)</span><span class="token punctuation">,</span>    <span class="token comment"># 下降台阶</span>
+            step_width<span class="token operator">=</span><span class="token number">0.3</span><span class="token punctuation">,</span>
+            platform_width<span class="token operator">=</span><span class="token number">3.0</span><span class="token punctuation">,</span>
+            holes<span class="token operator">=</span><span class="token boolean">False</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+        
+        <span class="token comment"># 3. 金字塔斜坡 (10%)</span>
+        <span class="token string">"hf_pyramid_slope"</span><span class="token punctuation">:</span> HfPyramidSlopedTerrainCfg<span class="token punctuation">(</span>
+            proportion<span class="token operator">=</span><span class="token number">0.1</span><span class="token punctuation">,</span> 
+            slope_range<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.4</span><span class="token punctuation">)</span><span class="token punctuation">,</span>            <span class="token comment"># 斜率 0-40%</span>
+            platform_width<span class="token operator">=</span><span class="token number">2.0</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+        
+        <span class="token comment"># 4. 倒金字塔斜坡 (10%)</span>
+        <span class="token string">"hf_pyramid_slope_inv"</span><span class="token punctuation">:</span> HfInvertedPyramidSlopedTerrainCfg<span class="token punctuation">(</span>
+            proportion<span class="token operator">=</span><span class="token number">0.1</span><span class="token punctuation">,</span> 
+            slope_range<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.4</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            platform_width<span class="token operator">=</span><span class="token number">2.0</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    
+    curriculum<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+    difficulty_range<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+</code></pre><p><strong>楼梯难度递增</strong>：</p>
+<ul>
+<li>难度0.0：台阶高度5cm（接近平地）</li>
+<li>难度1.0：台阶高度20cm（标准楼梯，需大幅度抬腿）</li>
+<li><strong>训练挑战</strong>：上楼需膝关节高抬，下楼需控制冲击力</li>
+</ul>
+<p><img src="image/stair.png" alt="stair"></p>
+<h3 id="42-奖励函数设计">4.2 奖励函数设计 </h3>
+<p><strong>核心问题</strong>：在楼梯地形中，由于地形高度变化较大（台阶高度5-20cm），如果沿用平地环境中基于世界坐标系的高度奖励，会导致机器人行为异常，因此需要将以下几个惩罚项去掉。</p>
+<p><strong>A. 基座高度保持 (pen_base_height)</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 平地环境中使用</span>
+pen_base_height <span class="token operator">=</span> RewTerm<span class="token punctuation">(</span>
+    func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>base_com_height<span class="token punctuation">,</span>
+    weight<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">,</span>
+    params<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"target_height"</span><span class="token punctuation">:</span> <span class="token number">0.78</span><span class="token punctuation">}</span>  <span class="token comment"># 目标高度78cm</span>
+<span class="token punctuation">)</span>
+</code></pre><p><strong>问题</strong>：楼梯上机器人基座高度需要随地形变化（上楼时升高，下楼时降低），固定目标高度会导致：</p>
+<ul>
+<li><strong>上楼时</strong>：机器人为保持78cm会下蹲或跪下</li>
+<li><strong>下楼时</strong>：机器人拒绝下台阶，停留在楼梯顶部</li>
+</ul>
+<p><strong>B. 足部调整（pen_feet_regulation）</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 足部调节惩罚 / Foot regulation penalty</span>
+pen_feet_regulation <span class="token operator">=</span> RewTerm<span class="token punctuation">(</span>
+    func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>feet_regulation<span class="token punctuation">,</span>                   
+    weight<span class="token operator">=</span><span class="token operator">-</span><span class="token number">0.1</span>
+<span class="token punctuation">)</span>
+</code></pre><p><strong>C. 足部着陆速度 (pen_foot_landing_velocity)</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 平地环境使用</span>
+pen_foot_landing_velocity <span class="token operator">=</span> RewTerm<span class="token punctuation">(</span>
+    func<span class="token operator">=</span>mdp<span class="token punctuation">.</span>foot_land_velocity<span class="token punctuation">,</span>
+    weight<span class="token operator">=</span><span class="token operator">-</span><span class="token number">0.1</span>
+<span class="token punctuation">)</span>
+</code></pre><p><strong>问题</strong>：下楼梯时足部着陆速度必然较大（重力加速度），惩罚会阻止机器人下楼。</p>
+<h3 id="43-训练曲线">4.3 训练曲线 </h3>
+<h4 id="431-粗糙地面">4.3.1 粗糙地面 </h4>
+<p><img src="image/rough_train.png" alt="rough"></p>
+<h4 id="432-楼梯环境">4.3.2 楼梯环境 </h4>
+<p><img src="image/stair_train.png" alt="stair"></p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

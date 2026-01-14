@@ -94,6 +94,29 @@ gym.register(
     },
 )
 
+############################
+# PF Blind Stair Environment
+############################
+gym.register(
+    id="Isaac-Limx-PF-Blind-Stair-v1",
+    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+    disable_env_checker=True,
+    kwargs={
+        "env_cfg_entry_point": limx_pointfoot_env_cfg.PFStairEnvCfgv1,
+        "rsl_rl_cfg_entry_point": limx_pf_blind_stair_runner_cfg,
+    },
+)
+
+gym.register(
+    id="Isaac-Limx-PF-Blind-Stair-Play-v1",
+    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+    disable_env_checker=True,
+    kwargs={
+        "env_cfg_entry_point": limx_pointfoot_env_cfg.PFStairEnvCfgv1_PLAY,
+        "rsl_rl_cfg_entry_point": limx_pf_blind_stair_runner_cfg,
+    },
+)
+
 #############################
 # WF Blind Flat Environment
 #############################

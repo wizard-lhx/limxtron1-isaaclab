@@ -316,6 +316,13 @@ class PPO:
                 + self.value_loss_coef * value_loss
                 - self.entropy_coef * entropy_batch_mean
             )
+            
+            # lin_vel_est = encoder_out_batch[:, :3]
+            # lin_vel_target = critic_obs_batch[:, :3]
+            # lin_vel_est_loss = torch.nn.functional.mse_loss(
+            #     lin_vel_est, lin_vel_target
+            # )
+            # loss += lin_vel_est_loss
 
             # 学习率退火 / Learning rate annealing
             if self.anneal_lr:

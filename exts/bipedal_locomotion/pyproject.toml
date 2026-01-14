@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=64", "wheel", "toml"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bipedal_locomotion"
+version = "0.1.0"
+description = "Bipedal locomotion extension for Isaac Lab"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "protobuf<5.0.0,>=3.20.2",
+    "h5py",
+    "tensorboard",
+    "moviepy",
+]
+
+[tool.setuptools]
+packages = ["bipedal_locomotion"]
+
+[tool.setuptools.package-data]
+bipedal_locomotion = ["**/*.json", "**/*.yaml", "**/*.yml"]

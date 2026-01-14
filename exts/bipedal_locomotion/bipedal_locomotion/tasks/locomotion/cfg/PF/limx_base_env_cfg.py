@@ -396,12 +396,12 @@ class EventsCfg:
 @configclass
 class RewardsCfg:
     """奖励项配置类 - 定义强化学习的奖励函数 / Reward terms configuration class - defines RL reward functions"""
-    # #
-    # # 终止相关奖励 / Termination-related rewards
-    # keep_balance = RewTerm(
-    #     func=mdp.stay_alive,    # 保持存活奖励 / Stay alive reward
-    #     weight=1.0              # 奖励权重 / Reward weight
-    # )
+    #
+    # 终止相关奖励 / Termination-related rewards
+    keep_balance = RewTerm(
+        func=mdp.stay_alive,    # 保持存活奖励 / Stay alive reward
+        weight=1.0              # 奖励权重 / Reward weight
+    )
 
     # tracking related rewards
     rew_lin_vel_xy = RewTerm(
@@ -422,7 +422,9 @@ class RewardsCfg:
     # 调节相关奖励 / Regulation-related rewards
     pen_base_height = RewTerm(
         func=mdp.base_com_height,                   # 基座高度惩罚 / Base height penalty
-        params={"target_height": 0.78},            # 目标高度 78cm / Target height 78cm
+        params={"target_height": 0.78,
+                # "sensor_cfg": SceneEntityCfg("height_scanner")
+                },
         weight=-1.0,                               # 负权重表示惩罚 / Negative weight indicates penalty
     )
     
@@ -463,27 +465,29 @@ class RewardsCfg:
             "feet_links_name": ["foot_[RL]_Link"]  # 足部连杆名称 / Foot link names
         }
     )
-    # #
-    # pen_feet_regulation = RewTerm(
-    #     func=mdp.feet_regulation,                   # 足部调节惩罚 / Foot regulation penalty
-    #     weight=-0.1,
-    #     params={
-    #         "asset_cfg": SceneEntityCfg("robot", body_names=["foot_[RL]_Link"]),
-    #         "base_height_target": 0.65,            # 基座目标高度 / Base target height
-    #         "foot_radius": 0.03                    # 足部半径 / Foot radius
-    #     },
-    # )
-    # #
-    # foot_landing_vel = RewTerm(
-    #     func=mdp.foot_landing_vel,                  # 足部着陆速度惩罚 / Foot landing velocity penalty
-    #     weight=-0.5,
-    #     params={
-    #         "asset_cfg": SceneEntityCfg("robot", body_names=["foot_[RL]_Link"]),
-    #         "sensor_cfg": SceneEntityCfg("contact_forces", body_names=["foot_[RL]_Link"]),
-    #         "foot_radius": 0.03,
-    #         "about_landing_threshold": 0.08         # 即将着陆阈值 / About to land threshold
-    #     },
-    # )
+    #
+    pen_feet_regulation = RewTerm(
+        func=mdp.feet_regulation,                   # 足部调节惩罚 / Foot regulation penalty
+        weight=-0.1,
+        params={
+            "asset_cfg": SceneEntityCfg("robot", body_names=["foot_[RL]_Link"]),
+            "base_height_target": 0.65,            # 基座目标高度 / Base target height
+            "foot_radius": 0.03,                    # 足部半径 / Foot radius
+            # "sensor_cfg": SceneEntityCfg("height_scanner"),
+        },
+    )
+    #
+    foot_landing_vel = RewTerm(
+        func=mdp.foot_landing_vel,                  # 足部着陆速度惩罚 / Foot landing velocity penalty
+        weight=-0.5,
+        params={
+            "asset_cfg": SceneEntityCfg("robot", body_names=["foot_[RL]_Link"]),
+            "contact_sensor_cfg": SceneEntityCfg("contact_forces", body_names=["foot_[RL]_Link"]),
+            "foot_radius": 0.03,
+            "about_landing_threshold": 0.08,         # 即将着陆阈值 / About to land threshold
+            # "height_sensor_cfg": SceneEntityCfg("height_scanner"),
+        },
+    )
     
     
     # 步态奖励 / Gait reward

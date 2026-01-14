@@ -55,6 +55,7 @@ import bipedal_locomotion  # noqa: F401
 from bipedal_locomotion.utils.wrappers.rsl_rl import RslRlPpoAlgorithmMlpCfg
 
 import numpy as np
+import omni.ui as ui
 
 class CameraController:
     """Camera controller to follow the robot (no external deps)."""
@@ -180,6 +181,32 @@ class ManualController:
             self.force[1] = -self.max_force
         if 'u' in keys_pressed_force:
             self.force.zero_()
+
+class VelocityMonitorWindow:
+    def __init__(self, env):
+        self.env = env
+        self.window = ui.Window("Velocity Monitor", width=300, height=200)
+        
+        with self.window.frame:
+            with ui.VStack():
+                ui.Label("Velocity Tracking", height=30)
+                self.cmd_x_label = ui.Label("Command X: 0.00 m/s")
+                self.cmd_y_label = ui.Label("Command Y: 0.00 m/s")
+                self.act_x_label = ui.Label("Actual X: 0.00 m/s")
+                self.act_y_label = ui.Label("Actual Y: 0.00 m/s")
+                self.error_label = ui.Label("Error: 0.000 m/s")
+    
+    def update(self, env_id=0):
+        """更新UI显示"""
+        cmd = self.env.unwrapped.command_manager.get_term("base_velocity").vel_command_b[env_id, :2]
+        act = self.env.unwrapped.scene["robot"].data.root_lin_vel_b[env_id, :2]
+        error = torch.norm(act - cmd[:2]).item()
+        
+        self.cmd_x_label.text = f"Command X: {cmd[0]:.2f} m/s"
+        self.cmd_y_label.text = f"Command Y: {cmd[1]:.2f} m/s"
+        self.act_x_label.text = f"Actual X: {act[0]:.2f} m/s"
+        self.act_y_label.text = f"Actual Y: {act[1]:.2f} m/s"
+        self.error_label.text = f"Error: {error:.3f} m/s"
 def main():
     """主函数 / Main function"""
     
@@ -231,32 +258,7 @@ def main():
     
     if args_cli.use_onnx:
         # 使用ONNX模型 / Use ONNX model
-        import onnxruntime as ort
-        export_model_dir = os.path.join(os.path.dirname(resume_path), "exported")
-        policy_path = os.path.join(export_model_dir, "policy.onnx")
-        encoder_path = os.path.join(export_model_dir, "encoder.onnx")
-        
-        if os.path.exists(policy_path) and os.path.exists(encoder_path):
-            policy_session = ort.InferenceSession(policy_path)
-            encoder_session = ort.InferenceSession(encoder_path)
-            
-            def encoder_fn(obs):
-                obs_np = obs.cpu().numpy()
-                encoder_out = encoder_session.run(None, {"obs": obs_np})[0]
-                return torch.from_numpy(encoder_out).to(env.unwrapped.device)
-            
-            def policy_fn(obs):
-                obs_np = obs.cpu().numpy()
-                action = policy_session.run(None, {"obs": obs_np})[0]
-                return torch.from_numpy(action).to(env.unwrapped.device)
-            
-            encoder = encoder_fn
-            policy = policy_fn
-            print(f"[INFO] 已加载ONNX模型 / Loaded ONNX model from: {export_model_dir}")
-        else:
-            print(f"[WARNING] ONNX模型文件不存在 / ONNX model files not found at: {export_model_dir}")
-            print("[INFO] 将使用PyTorch模型 / Will use PyTorch model instead")
-            args_cli.use_onnx = False
+        pass
     
     if not args_cli.use_onnx:
         # 使用PyTorch模型 / Use PyTorch model
@@ -270,6 +272,7 @@ def main():
         print(f"[INFO] 已加载PyTorch模型 / Loaded PyTorch model")
     
     camera_controller = CameraController(env)
+    monitor = VelocityMonitorWindow(env)
 
     # reset environment
     obs, obs_dict = env.get_observations()
@@ -337,8 +340,8 @@ def main():
             
             step_count += 1
             
-            actual_vel = env.unwrapped.scene["robot"].data.root_lin_vel_w[0, :2]
-            actual_ang_vel = env.unwrapped.scene["robot"].data.root_ang_vel_w[0, 2]
+            actual_vel = env.unwrapped.scene["robot"].data.root_lin_vel_b[0, :2]
+            actual_ang_vel = env.unwrapped.scene["robot"].data.root_ang_vel_b[0, 2]
             mse_vel = torch.mean((torch.cat([actual_vel,actual_ang_vel.unsqueeze(0)])-commands[0]) ** 2).item()
             # 每100步打印一次状态 / Print status every 100 steps
             if step_count % 100 == 0:
@@ -349,7 +352,8 @@ def main():
 
         # Update camera to follow robot
         camera_controller.update_camera_view()
-        
+        monitor.update(env_id=0)
+
     # 关闭环境 / Close environment
     env.close()
 
